@@ -14,7 +14,7 @@ if PLOT:
 
     from mappymatch.utils.plot import plot_matches
 
-trace = Trace.from_csv(package_root() / "resources/traces/sample_trace_3.csv")
+trace = Trace.from_csv("./directions.csv")
 
 # generate a geofence polygon that surrounds the trace; units are in meters;
 # this is used to query OSM for a small map that we can match to
@@ -28,6 +28,7 @@ snap_matcher = LineSnapMatcher(nx_map)
 
 lcss_matches = lcss_matcher.match_trace(trace)
 snap_matches = snap_matcher.match_trace(trace)
+
 
 if PLOT:
     lcss_file = Path("lcss_matches.html")
